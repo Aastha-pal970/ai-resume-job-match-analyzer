@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Resume + Job Match Analyzer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Placement Project</p>
+          <h1>AI Resume + Job Match Analyzer</h1>
+        </div>
+        <div class="status-pill">NLP Scoring</div>
+      </section>
+
+      <section class="workspace">
+        <div class="input-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Resume</h2>
+              <p>Upload a PDF or paste extracted resume text.</p>
+            </div>
+          </div>
+
+          <label class="upload-zone">
+            <input id="resumeFile" type="file" accept="application/pdf" />
+            <span id="uploadLabel">Choose resume PDF</span>
+          </label>
+
+          <textarea id="resumeText" rows="12" placeholder="Paste resume text here if you do not want to upload a PDF."></textarea>
+        </div>
+
+        <div class="input-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Job Description</h2>
+              <p>Paste the role requirements from LinkedIn, Naukri, or a company careers page.</p>
+            </div>
+          </div>
+
+          <textarea id="jobDescription" rows="17"></textarea>
+          <button id="analyzeButton" class="primary-button">Analyze Match</button>
+        </div>
+      </section>
+
+      <section id="message" class="message hidden"></section>
+
+      <section id="results" class="results hidden">
+        <div id="scoreCard" class="score-card">
+          <div>
+            <p class="eyebrow">Overall Match</p>
+            <strong id="matchScore">0%</strong>
+            <span id="summary"></span>
+          </div>
+          <div id="scoreRing" class="score-ring">
+            <span id="scoreNumber">0</span>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric"><span>Semantic Score</span><strong id="semanticScore">0%</strong></div>
+          <div class="metric"><span>Skill Score</span><strong id="skillScore">0%</strong></div>
+          <div class="metric"><span>Matched Skills</span><strong id="matchedCount">0</strong></div>
+          <div class="metric"><span>Missing Skills</span><strong id="missingCount">0</strong></div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="skill-box">
+            <h3>Matched Skills</h3>
+            <div id="matchedSkills" class="chips"></div>
+          </div>
+          <div class="skill-box">
+            <h3>Missing Skills</h3>
+            <div id="missingSkills" class="chips"></div>
+          </div>
+        </div>
+
+        <div class="suggestions">
+          <div class="panel-header">
+            <div>
+              <h2>Resume Improvement Suggestions</h2>
+              <p>Use these points to improve ATS fit and interview quality.</p>
+            </div>
+          </div>
+          <ol id="suggestions"></ol>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
